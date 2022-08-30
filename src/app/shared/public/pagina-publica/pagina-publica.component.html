@@ -1,0 +1,30 @@
+
+<section
+    [ngClass]="['containerPaginaPublica', classeCss]"
+>
+    <div
+        [ngClass]="['containerLogo', classeCssLogo]"
+    >
+        <img
+            src="assets\img\ratcrab_logo.svg"
+            alt="ratinho"
+            class="logo"
+            
+        >
+    </div>
+    <div class="containerConteudo">
+        <form (submit)="aoSubmeter()">
+            <ng-content select="[conteudoForm]"></ng-content>
+
+            <app-button 
+                [texto]="textoBotaoSubmit"
+                type="submit"
+                classeCss="botaoPublico"
+            ></app-button>
+        </form>
+        
+        <ng-content select="[rodape]"></ng-content>
+    </div>
+
+
+</section>

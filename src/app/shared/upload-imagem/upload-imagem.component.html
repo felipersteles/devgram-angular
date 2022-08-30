@@ -1,0 +1,25 @@
+
+<div [ngClass]="['containerUploadImagem', classeCssContainer]"
+    (click)="inputArquivo.click()"
+>
+    <div class="containerPrevisu" *ngIf="imagemPrevisualizacao">
+        <img
+            [src]="imagemPrevisualizacao"
+            alt="Imagem de previsualizacao"
+            [class]="classeCssImagemPrevisualizacao"
+        >
+    </div>
+    <input
+        type="file"
+        class="oculto"
+        accept="image/*"
+        (change)="trocarArquivo($event)"
+        #inputArquivo
+    >
+</div>
+
+
+
+
+
+

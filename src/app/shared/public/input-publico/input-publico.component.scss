@@ -1,0 +1,19 @@
+
+//Começar pelo componente pai 
+.containerInputPublico{
+    .inputPublico{
+        border-bottom: 1px solid var(--corPrimaria);
+        display: flex;
+         
+        
+        input{
+            border: none;
+            outline: none;
+            color: var(--corPrimaria);
+            flex: 1;
+        }
+    }
+}
+
+
+

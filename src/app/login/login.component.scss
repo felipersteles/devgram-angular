@@ -1,0 +1,19 @@
+
+@import '../../assets/estilo/variaveis.scss';
+
+app-pagina-publica{
+    app-input-publico:first-of-type{
+        display: block;
+        margin-top: 56px;
+        margin-bottom: 32px;
+    }
+
+    @media screen and (min-width: $breakpointDesktop) {
+        app-input-publico:first-of-type{
+            margin-top: 0px;
+        }
+    }
+}
+
+
+

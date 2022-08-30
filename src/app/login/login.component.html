@@ -1,0 +1,23 @@
+<app-pagina-publica
+    textoBotaoSubmit="Login"
+>
+    <app-input-publico
+        imagem="assets/img/icones/envelope.svg"
+        placeHolder="E-mail"
+        tipo="email"
+        [referenciaFormulario]="obterReferencia('login')"
+    conteudoForm></app-input-publico>
+
+    <app-input-publico
+        imagem="assets/img/icones/chave.svg"
+        placeHolder="Senha"
+        tipo="password"
+        [referenciaFormulario]="obterReferencia('senha')"
+    conteudoForm></app-input-publico>
+
+    <app-rodape-pagina-publica
+        pergunta="Não possui conta?"
+        textoDaAcao="Faça seu cadastro agora!"
+        rota="cadastro"
+    rodape></app-rodape-pagina-publica>
+</app-pagina-publica>

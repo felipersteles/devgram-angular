@@ -1,0 +1,47 @@
+
+<app-pagina-publica
+    classeCssCustomizada="paginaCadastro"
+    classeCssLogo="desktop"
+    textoBotaoSubmit="Login"
+>
+    <app-upload-imagem
+        imagemPrevisualizacao="assets/img/icones/avatar.svg"
+        classeCssImagemPrevisualizacao="avatarPrevisualizacao"
+        classeCssContainer="paginaCadastroUpload"
+        [referenciaFormulario]="obterReferencia('file')"
+    conteudoForm></app-upload-imagem>
+
+    <app-input-publico
+        imagem="assets/img/icones/user_active.svg"
+        placeHolder="Nome Completo"
+        tipo="text"
+        [referenciaFormulario]="obterReferencia('nome')"
+    conteudoForm></app-input-publico>
+
+    <app-input-publico
+        imagem="assets/img/icones/envelope.svg"
+        placeHolder="E-mail"
+        tipo="email"
+        [referenciaFormulario]="obterReferencia('email')"
+    conteudoForm></app-input-publico>
+
+    <app-input-publico
+        imagem="assets/img/icones/chave.svg"
+        placeHolder="Senha"
+        tipo="password"
+        [referenciaFormulario]="obterReferencia('senha')"
+    conteudoForm></app-input-publico>
+
+    <app-input-publico
+        imagem="assets/img/icones/chave.svg"
+        placeHolder="Confirmar Senha"
+        tipo="password"
+        [referenciaFormulario]="obterReferencia('confirmacaoSenha')"
+    conteudoForm></app-input-publico>
+
+    <app-rodape-pagina-publica
+        pergunta="Já possui conta?"
+        textoDaAcao="Faça seu login agora!"
+        rota="login"
+    rodape></app-rodape-pagina-publica>
+</app-pagina-publica>

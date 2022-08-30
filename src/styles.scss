@@ -1,0 +1,71 @@
+/* You can add global styles to this file, and also import other style files */
+@import './assets/fonts/fonts.scss';
+@import './assets/estilo/variaveis.scss';
+
+:root{
+    //Font stuffs
+    --fontRegular: 'Biennale Regular';
+    --fontBold: 'Biennale Bold';
+    --fontLight: 'Biennale Light';
+
+    --corPrimaria: #5E49FF;
+    --corPrimaria2: #25CBD3;
+    --corPrimaria3: #F0F5FF;
+
+    //Color stuffs
+    --cinza: #f4f4f4;
+    --cinza1: #DADADA;
+    --cinza2: #7C7786;
+    --cinza3: #4D4C4D;
+    --cinza4: #333333;
+
+    --preto: black;
+    --branco: white;
+    --vermelho: red;
+}
+
+*{
+    font-family: var(--fontRegular);
+    font-size: 15px;
+}
+
+html, body{
+    height: 100%;
+    margin: 0;
+}
+
+// classe oculto
+.oculto{
+    display: none !important;
+}
+
+input{
+    //ficar acessivel em navegadores da microsoft
+    &::placeholder,
+    &:-ms-input-placeholder,
+    *::-ms-input-placeholder{
+        color: var(--cinza2);
+    }
+}
+
+.mensagemErro{
+    display: block;
+    color: var(--vermelho);
+    margin: 5px 0 0;
+    font-size: 12px;
+}
+
+.desktop {
+    display: none;
+    @media screen and (min-width: $breakpointDesktop) {
+        display: block;
+    }
+}
+
+
+.mobile {
+    display: block;
+    @media screen and (min-width: $breakpointDesktop) {
+        display: none !important;
+    }
+}
