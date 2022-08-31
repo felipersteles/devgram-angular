@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
   }
 
   public submit(): void{
+    // Integracao com a API
     console.log(this.form.value);
   }
 

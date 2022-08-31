@@ -2,7 +2,8 @@
 <app-pagina-publica
     classeCssCustomizada="paginaCadastro"
     classeCssLogo="desktop"
-    textoBotaoSubmit="Login"
+    textoBotaoSubmit="Cadastrar"
+    (submeterFormulario)="aoSubmeter()"
 >
     <app-upload-imagem
         imagemPrevisualizacao="assets/img/icones/avatar.svg"
@@ -42,6 +43,6 @@
     <app-rodape-pagina-publica
         pergunta="Já possui conta?"
         textoDaAcao="Faça seu login agora!"
-        rota="login"
+        rota=""
     rodape></app-rodape-pagina-publica>
 </app-pagina-publica>

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import { iif } from 'rxjs';
-import { confirmacaoSenha } from '../../validadores/confirmacao-senha-validator';
+import { confirmacaoSenha } from '../../validadores/confirmacao-senha.validator';
 
 @Component({
   selector: 'app-input-publico',
@@ -21,7 +21,7 @@ export class InputPublicoComponent implements OnInit {
   }
 
   public aoModificarCampo(event: any): void {
-    console.log(event)
+    //console.log(event)
     this.referenciaFormulario?.setValue(event);
     this.referenciaFormulario?.markAsDirty();
   }

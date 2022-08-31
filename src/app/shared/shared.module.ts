@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { ButtonComponent } from './button/button.component';
 import { AvatarComponent } from './avatar/avatar.component';
 import { UploadImagemComponent } from './upload-imagem/upload-imagem.component';
@@ -8,10 +9,17 @@ import { FormsModule } from '@angular/forms';
 import { PaginaPublicaComponent } from './public/pagina-publica/pagina-publica.component';
 import { RodapePaginaPublicaComponent } from './public/rodape-pagina-publica/rodape-pagina-publica.component';
 import { RouterModule } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 
 
 @NgModule({
+  providers: [
+    {
+      provide: 'DEVAGRAM URL API',
+      useValue: environment.devagramUrlApi
+    }
+  ],
   declarations: [
     ButtonComponent,
     AvatarComponent,
@@ -23,7 +31,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     FormsModule, //forms stuffs
-    RouterModule //alternar entre rotas
+    RouterModule, //alternar entre rotas
+    HttpClientModule, //Importacao para uso da API
   ],
   exports: [
     ButtonComponent,
