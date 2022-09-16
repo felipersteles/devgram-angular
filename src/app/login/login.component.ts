@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AutenticacaoService } from '../autenticacao/autenticacao.service';
 
 @Component({
   selector: 'app-login',
@@ -24,11 +25,13 @@ export class LoginComponent implements OnInit {
    
 
   public form: FormGroup;
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private servicoAutenticacao: AutenticacaoService
+  ) {
     this.form = this.fb.group({
-      imagem: [null],
-      login: ['', Validators.required],
-      senha: ['', Validators.required],
+      login: ['', [Validators.required, Validators.email]],
+      senha: ['', [Validators.required, Validators.minLength(4)]],
     })
   }
 
@@ -43,9 +46,23 @@ export class LoginComponent implements OnInit {
     return this.form.controls[nomeCampo];
   }
 
-  public submit(): void{
+  //por ser async precisa deveolver uma Promise
+  public async submit(): Promise<void>{
+    //console.log(this.form.value);
+    if (this.form.invalid) {
+      alert('Preencha os dados corretamente!');
+      return;
+    }
+
     // Integracao com a API
-    console.log(this.form.value);
+    try {
+      await this.servicoAutenticacao.login(
+        this.form.value
+      );
+    } catch(excecao: any) {
+      const mensagemErro = excecao?.error?.erro || 'Erro ao realizar o login'
+      alert(mensagemErro);
+    }
   }
 
 }

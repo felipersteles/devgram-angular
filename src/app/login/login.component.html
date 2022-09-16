@@ -1,5 +1,6 @@
 <app-pagina-publica
     textoBotaoSubmit="Login"
+    (submiterFormulario)="submit()"
 >
     <app-input-publico
         imagem="assets/img/icones/envelope.svg"
@@ -18,6 +19,6 @@
     <app-rodape-pagina-publica
         pergunta="Não possui conta?"
         textoDaAcao="Faça seu cadastro agora!"
-        rota="cadastro"
+        rota="/cadastro"
     rodape></app-rodape-pagina-publica>
 </app-pagina-publica>

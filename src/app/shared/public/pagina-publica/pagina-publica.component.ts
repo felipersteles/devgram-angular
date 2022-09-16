@@ -12,7 +12,7 @@ export class PaginaPublicaComponent implements OnInit {
 
   @Input() public textoBotaoSubmit?: string;
 
-  @Output() submeterFormulario: EventEmitter<any> = new EventEmitter();
+  @Output() submiterFormulario: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
@@ -20,6 +20,6 @@ export class PaginaPublicaComponent implements OnInit {
   }
 
   public aoSubmeter(): void{
-    this.submeterFormulario.emit();
+    this.submiterFormulario.emit();
   }
 }

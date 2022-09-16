@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AutenticacaoService } from '../autenticacao/autenticacao.service';
 import { confirmacaoSenha } from '../shared/validadores/confirmacao-senha.validator';
 import { CadastroService } from './cadastro.service';
 
@@ -11,7 +12,11 @@ import { CadastroService } from './cadastro.service';
 export class CadastroComponent implements OnInit {
 
   public form: FormGroup;
-  constructor(private fb: FormBuilder, private servicoCadastro: CadastroService) { //alem de receber o formbuilder tem que recever o serviod e cadastro
+  constructor(
+    private fb: FormBuilder,
+    private servicoCadastro: CadastroService,
+    private autentificacaoService: AutenticacaoService
+  ){ //alem de receber o formbuilder tem que recever o serviço de cadastro e de autentificação
     this.form = this.fb.group({
       file: [null],
       nome: ['', [Validators.required, Validators.minLength(3)]], //tamanho minimo 3 caracteres
@@ -37,21 +42,25 @@ export class CadastroComponent implements OnInit {
 
     try {
       const valoresDoFormulario = this.form.value;
-      //console.log(valoresDoFormulario);
-      let corpoDaRequisicao = valoresDoFormulario;
+      //console.log(valoresDoFormulario); arquivo json
+      
+      const corpoDaRequisicao = new FormData();
+      corpoDaRequisicao.append('nome', valoresDoFormulario.nome);
+      corpoDaRequisicao.append('email', valoresDoFormulario.email);
+      corpoDaRequisicao.append('senha', valoresDoFormulario.senha);
 
       if (valoresDoFormulario.file) {
-        corpoDaRequisicao = new FormData();
         corpoDaRequisicao.append('file', valoresDoFormulario.file);
-        corpoDaRequisicao.append('nome', valoresDoFormulario.nome);
-        corpoDaRequisicao.append('email', valoresDoFormulario.email);
-        corpoDaRequisicao.append('senha', valoresDoFormulario.senha);
-      }
+      } 
 
       await this.servicoCadastro.cadastrar(corpoDaRequisicao);
-      alert('cadastro realizado com sucesso');
+      //alert('cadastro realizado com sucesso');
 
       // fazer o login
+      await this.autentificacaoService.login({
+        login: valoresDoFormulario.email,
+        senha: valoresDoFormulario.senha
+      })
 
     } catch (excecao: any) {
       const mensagemErro = excecao?.error?.erro || 'Erro ao realizar o cadastro'//esse erro é da api 

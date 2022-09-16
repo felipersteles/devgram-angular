@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ButtonComponent } from './button/button.component';
 import { AvatarComponent } from './avatar/avatar.component';
 import { UploadImagemComponent } from './upload-imagem/upload-imagem.component';
@@ -10,14 +10,20 @@ import { PaginaPublicaComponent } from './public/pagina-publica/pagina-publica.c
 import { RodapePaginaPublicaComponent } from './public/rodape-pagina-publica/rodape-pagina-publica.component';
 import { RouterModule } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { DevagramApiInterceptador } from './services/devagram-api-interceptor.service';
 
 
 
 @NgModule({
   providers: [
     {
-      provide: 'DEVAGRAM URL API',
+      provide: 'DEVAGRAM_URL_API',
       useValue: environment.devagramUrlApi
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: DevagramApiInterceptador,
+      multi: true //podemos ter mais de um interceptador
     }
   ],
   declarations: [

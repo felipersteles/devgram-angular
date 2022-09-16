@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { DevagramUsuarioApiService } from '../shared/services/davagram-usuario-api.service';
 import { DevagramApiService } from '../shared/services/devagram-api.service';
 import { CredenciaisDevagram } from './credenciais-devagram.type';
 import { RespostaLoginDevagram } from './resposta-login-devagram.type';
@@ -14,8 +15,9 @@ export class AutenticacaoService extends DevagramApiService{
   //Feito para que haja o redirecionamento de rotas
   constructor(
     protected _http: HttpClient,
-    @Inject('DEVAGRAM URL API') private _devagramUrlApi: string,
-    private router: Router
+    @Inject('DEVAGRAM_URL_API') private _devagramUrlApi: string,
+    private router: Router,
+    private usuarioApiService: DevagramUsuarioApiService
   ) {
     super(_http, _devagramUrlApi);
   }
@@ -33,9 +35,15 @@ export class AutenticacaoService extends DevagramApiService{
     localStorage.setItem('nome', repostaLogin.nome);
     localStorage.setItem('email', repostaLogin.email);
 
-    // TODO: pegar os dados complementares do usuario logado
+    //pegar os dados complementares do usuario logado
+    const dadosUsuario = await this.usuarioApiService.buscarDadosUsuario(); //ele é uma função que devolve dados assincronos por isso o await
+    localStorage.setItem("id", dadosUsuario._id);
 
-    //redirecionando para o login
+    if (dadosUsuario.avatar) {
+      localStorage.setItem("avatar", dadosUsuario.avatar);
+    }
+
+    //redirecionando para a rota home
     this.router.navigateByUrl('/');
   }
 

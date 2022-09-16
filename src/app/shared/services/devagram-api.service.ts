@@ -6,12 +6,12 @@ import { Inject, Injectable } from '@angular/core';
 })
 export class DevagramApiService {
 
-  constructor(protected http: HttpClient,
-    @Inject('DEVAGRAM URL API') private devagramUrlApi: string
-  ) { 
-    
-  }
+  constructor(
+    protected http: HttpClient, //classe utilizada para fazer a requisição da API
+    @Inject('DEVAGRAM_URL_API') private devagramUrlApi: string
+  ) { }
   
+  //classe generica
   public post(url: string, body: any): Promise<any>{
     return new Promise((resolve, reject) => {
       this.http.post(
@@ -24,7 +24,19 @@ export class DevagramApiService {
     });
   }
 
-  private obterUrl(url: string): string{
+  //classe generica
+  public get(url: string): Promise<any>{
+    return new Promise((resolve, reject) => {
+      this.http.get(
+        this.obterUrl(url)
+      ).subscribe({
+        next: v => resolve(v),
+        error: e=> reject(e)
+      })
+    });
+  }
+
+  private obterUrl(url: string): string {
     return `${this.devagramUrlApi}/${url}`;
   }
 }

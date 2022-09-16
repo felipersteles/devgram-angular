@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AutenticacaoGuard } from './autenticacao/guarda-autenticacao.guard';
 
 const routes: Routes = [
   {
@@ -14,11 +15,10 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
   },
   {
-    // Criar o componente da home e colocar a validação de acesso
     path: '',
-    loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
+    canActivate: [AutenticacaoGuard], //validação de acesso
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
   },
-  { path: 'cadastro/login', redirectTo: 'login' },
 ];
 
 @NgModule({
