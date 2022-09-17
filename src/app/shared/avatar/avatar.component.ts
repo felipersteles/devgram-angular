@@ -19,6 +19,6 @@ export class AvatarComponent implements OnInit {
     if (this.src)
       return this.src;
     
-    return 'assets/img/icones/avatar.svg'
+    return 'assets/img/icones/avatar.svg';
   }
 }

@@ -3,6 +3,7 @@ import { Inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { DevagramUsuarioApiService } from '../shared/services/davagram-usuario-api.service';
 import { DevagramApiService } from '../shared/services/devagram-api.service';
+import { UsuarioLogado } from '../shared/tipos/usuario-logado.type';
 import { CredenciaisDevagram } from './credenciais-devagram.type';
 import { RespostaLoginDevagram } from './resposta-login-devagram.type';
 
@@ -55,12 +56,23 @@ export class AutenticacaoService extends DevagramApiService{
     localStorage.removeItem('token');
     localStorage.removeItem('nome');
     localStorage.removeItem('email');
-
-    // TODO: remover os dados complementares
+    localStorage.removeItem('avatar');
+    localStorage.removeItem('id');
 
     //redirecionar para tela de login
     this.router.navigateByUrl('/login');
   }
 
-  // TODO: criar metodo extra para devolver as infos do usuario logado
+  // metodo para devolver as infos do usuario logado
+  obterUsuarioLogado(): UsuarioLogado | null {
+    if (!this.estaLogado())
+      return null;
+    
+    return {
+      id: localStorage.getItem('id'),
+      nome: localStorage.getItem('nome'),
+      email: localStorage.getItem('email'),
+      avatar: localStorage.getItem('avatar')
+    } as UsuarioLogado;
+  }
 }

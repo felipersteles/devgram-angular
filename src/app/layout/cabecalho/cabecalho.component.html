@@ -1,0 +1,44 @@
+
+<!--tag para definir um cabeçalho-->
+<header class="cabecalhoPrincipal">
+    <div class="conteudoCabecalhoPrincipal">
+        <div class="logoCabecalho">
+            <img
+                src="assets/img/logo_horizontal.svg"
+                alt="Logo horizontal"
+                (click)="irParaHome()"
+            >
+        </div>
+
+        <div class="barraPesquisa">
+            <div class="iconePesquisa">
+                <img src="assets/img/icones/lupa.svg" 
+                alt="Icone lupa"
+                >
+            </div>
+            <input 
+                type="text"
+                placeholder="Pesquisar"
+                [(ngModel)]="termoPesquisado"
+                (keyup)="pesquisarUsuarios()"
+            />
+        </div>
+    </div>
+
+    <!--componenten de pesquisa-->
+    <div class="containerResultadoPesquisa" *ngIf="resultadoDaPesquisa.length">
+        <div 
+            *ngFor="let usuario of resultadoDaPesquisa"
+            class="resultado"
+            (click)="irParaPerfil(usuario._id)"
+        >
+            <app-avatar [src]="usuario.avatar"></app-avatar>
+            <div class="informacoesUsuario">
+                <strong> {{ usuario.nome }} </strong>
+                <span> {{ usuario.email }} </span>
+            </div>
+        </div>
+    </div>
+</header>
+
+

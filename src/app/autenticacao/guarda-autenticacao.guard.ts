@@ -22,7 +22,7 @@ export class AutenticacaoGuard implements CanActivate{
     ){}
     
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree {
-        //Saber se o usuariio esta logado
+        //Saber se o usuario esta logado
         if (this.servicoAutenticacao.estaLogado()) {
             return true;
         }
