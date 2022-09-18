@@ -87,4 +87,14 @@ body {
     }
 }
 
+strong {
+    font: 15px;
+    color: var(--cinza4);
+}
 
+.conteudoDesktop{
+    @media screen and (min-width: $breakpointDesktop){
+        width: 30%;
+        margin: auto;
+    }
+}

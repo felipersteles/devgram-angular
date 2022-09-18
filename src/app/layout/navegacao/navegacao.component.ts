@@ -16,11 +16,11 @@ export class NavegacaoComponent implements OnInit {
     },
     publicacao: {
       img: 'publicacao',
-      rotas: []
+      rotas: ['/publicacao']
     },
     perfil: {
       img: 'usuario',
-      rotas: []
+      rotas: ['/perfil/pessoal']
     }
   }
   constructor(private router: Router) { }
@@ -37,4 +37,8 @@ export class NavegacaoComponent implements OnInit {
     return `assets/img/icones/${icone}.svg`;
   }
 
+  public redirecinarRota(menu: string): void{
+    const rotaMenu = this.mapaDeRotas[menu];
+    this.router.navigateByUrl(rotaMenu.rotas[0])
+  }
 }

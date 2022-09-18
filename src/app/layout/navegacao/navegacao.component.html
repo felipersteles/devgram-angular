@@ -1,15 +1,15 @@
 
 <nav class="barraNavegacao">
     <ul>
-        <li>
+        <li (click)="redirecinarRota('home')">
             <img [src]="obterImagem('home')" alt="icone home">
         </li>
         
-        <li>
+        <li (click)="redirecinarRota('publicacao')">
             <img [src]="obterImagem('publicacao')" alt="icone newPost">
         </li>
         
-        <li>
+        <li (click)="redirecinarRota('perfil')">
             <img [src]="obterImagem('perfil')" alt="icone perfil">
         </li>
     </ul>

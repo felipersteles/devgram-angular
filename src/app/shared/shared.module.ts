@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ButtonComponent } from './button/button.component';
-import { AvatarComponent } from './avatar/avatar.component';
-import { UploadImagemComponent } from './upload-imagem/upload-imagem.component';
+import { ButtonComponent } from './componentes/button/button.component';
+import { AvatarComponent } from './componentes/avatar/avatar.component';
+import { UploadImagemComponent } from './componentes/upload-imagem/upload-imagem.component';
 import { InputPublicoComponent } from './public/input-publico/input-publico.component';
 import { FormsModule } from '@angular/forms';
 import { PaginaPublicaComponent } from './public/pagina-publica/pagina-publica.component';
@@ -11,6 +11,7 @@ import { RodapePaginaPublicaComponent } from './public/rodape-pagina-publica/rod
 import { RouterModule } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { DevagramApiInterceptador } from './services/devagram-api-interceptor.service';
+import { FeedComponent } from './componentes/feed/feed.component';
 
 
 
@@ -32,7 +33,8 @@ import { DevagramApiInterceptador } from './services/devagram-api-interceptor.se
     UploadImagemComponent,
     InputPublicoComponent,
     PaginaPublicaComponent,
-    RodapePaginaPublicaComponent
+    RodapePaginaPublicaComponent,
+    FeedComponent
   ],
   imports: [
     CommonModule,
@@ -47,6 +49,7 @@ import { DevagramApiInterceptador } from './services/devagram-api-interceptor.se
     InputPublicoComponent,
     PaginaPublicaComponent,
     RodapePaginaPublicaComponent,
+    FeedComponent
   ]
 })
 export class SharedModule { }
