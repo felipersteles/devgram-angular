@@ -1,7 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
-import { iif } from 'rxjs';
-import { confirmacaoSenha } from '../../validadores/confirmacao-senha.validator';
 
 @Component({
   selector: 'app-input-publico',

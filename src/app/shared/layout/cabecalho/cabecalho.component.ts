@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AutenticacaoService } from 'src/app/autenticacao/autenticacao.service';
+import { AutenticacaoService } from 'src/app/shared/autenticacao/autenticacao.service';
 import { DevagramUsuarioApiService } from 'src/app/shared/services/davagram-usuario-api.service';
 import { UsuarioDevagram } from 'src/app/shared/tipos/usuario-devagram.type';
 

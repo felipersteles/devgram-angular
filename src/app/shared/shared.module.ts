@@ -4,14 +4,18 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ButtonComponent } from './componentes/button/button.component';
 import { AvatarComponent } from './componentes/avatar/avatar.component';
 import { UploadImagemComponent } from './componentes/upload-imagem/upload-imagem.component';
-import { InputPublicoComponent } from './public/input-publico/input-publico.component';
+import { InputPublicoComponent } from './componentes/public/input-publico/input-publico.component';
 import { FormsModule } from '@angular/forms';
-import { PaginaPublicaComponent } from './public/pagina-publica/pagina-publica.component';
-import { RodapePaginaPublicaComponent } from './public/rodape-pagina-publica/rodape-pagina-publica.component';
+import { PaginaPublicaComponent } from './componentes/public/pagina-publica/pagina-publica.component';
+import { RodapePaginaPublicaComponent } from './componentes/public/rodape-pagina-publica/rodape-pagina-publica.component';
 import { RouterModule } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { DevagramApiInterceptador } from './services/devagram-api-interceptor.service';
 import { FeedComponent } from './componentes/feed/feed.component';
+import { PostagemComponent } from './componentes/feed/postagem/postagem.component';
+import { CabecalhoComponent } from './layout/cabecalho/cabecalho.component';
+import { NavegacaoComponent } from './layout/navegacao/navegacao.component';
+import { RodapeComponent } from './layout/rodape/rodape.component';
 
 
 
@@ -34,7 +38,11 @@ import { FeedComponent } from './componentes/feed/feed.component';
     InputPublicoComponent,
     PaginaPublicaComponent,
     RodapePaginaPublicaComponent,
-    FeedComponent
+    FeedComponent,
+    PostagemComponent,
+    CabecalhoComponent,
+    NavegacaoComponent,
+    RodapeComponent,
   ],
   imports: [
     CommonModule,
@@ -49,7 +57,9 @@ import { FeedComponent } from './componentes/feed/feed.component';
     InputPublicoComponent,
     PaginaPublicaComponent,
     RodapePaginaPublicaComponent,
-    FeedComponent
+    FeedComponent,
+    CabecalhoComponent,
+    RodapeComponent
   ]
 })
 export class SharedModule { }

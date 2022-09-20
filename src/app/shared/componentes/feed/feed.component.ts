@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AutenticacaoService } from 'src/app/shared/autenticacao/autenticacao.service';
 import { Postagem } from '../../tipos/postagem.type';
+import { UsuarioLogado } from '../../tipos/usuario-logado.type';
+import { FeedService } from './feed.service';
 
 @Component({
   selector: 'app-feed',
@@ -8,48 +11,23 @@ import { Postagem } from '../../tipos/postagem.type';
 })
 export class FeedComponent implements OnInit {
 
-  public postagens: Array<Postagem> = [
-    {
-      usuario: {
-        nome: 'Franz Kafka'
-      },
-      comentarios: [
-        {
-          nome: 'Felipe Teles',
-          comentario: 'Tu é muito feio kkkkkkk'
-        },
-        {
-          nome: 'Rodrigo Pontes',
-          comentario: 'OMG'
-        }
-      ],
-      foto: 'assets/img/postsExemplo/franskafka.jpg',
-      quantidadeCurtidas: 45,
-      descricao: 'Foto minha tirada na Alemanha para publicacao do meu primeiro livro. lembro como se fosse ontem o frio na barriga que eu tive quando estava indo para o estudio'
-    } as Postagem,
-    {
-      usuario: {
-        nome: 'Michelangelo'
-      },
-      comentarios: [
-        {
-          nome: 'Felipe Teles',
-          comentario: 'Obra de arte'
-        },
-        {
-          nome: 'Rodrigo Pontes',
-          comentario: 'beautiful'
-        }
-      ],
-      foto: 'assets/img/postsExemplo/Allori_Venus_Cupido.jpg',
-      quantidadeCurtidas: 644,
-      descricao: 'releitura da minha obra Venus e Cupido'
-    } as Postagem
-  ];
+  public usuarioLogado: UsuarioLogado | null;
+  public postagens: Array<Postagem> = [];
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(
+    private servicoAutenticacao: AutenticacaoService,
+    private servicoFeed: FeedService
+  ) { 
+    this.usuarioLogado = this.servicoAutenticacao.obterUsuarioLogado();
   }
 
+  async ngOnInit(): Promise<void> {
+    try {
+      //console.log('chamar a api')
+      const postagens = await this.servicoFeed.carregarPostagens();
+      this.postagens = postagens;
+    } catch (e: any) {
+      alert(e.error?.erro || 'Erro ao carregar o feed.');
+    }
+  }
 }

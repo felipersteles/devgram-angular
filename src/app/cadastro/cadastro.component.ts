@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AutenticacaoService } from '../autenticacao/autenticacao.service';
+import { AutenticacaoService } from '../shared/autenticacao/autenticacao.service';
 import { confirmacaoSenha } from '../shared/validadores/confirmacao-senha.validator';
 import { CadastroService } from './cadastro.service';
 
