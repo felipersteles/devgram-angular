@@ -56,5 +56,6 @@ export class CabecalhoComponent implements OnInit {
   public irParaPerfil(idUsuario: string): void {
     //console.log(idUsuario)
     this.router.navigate(['perfil', idUsuario]);
+    this.resultadoDaPesquisa = [];
   }
 }
