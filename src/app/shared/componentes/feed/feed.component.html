@@ -1,5 +1,6 @@
 
 <div class="containerFeed conteudoDesktop">
+    <app-loading></app-loading>
     <app-postagem *ngFor="let postagem of postagens"
         [postagem]="postagem"
         [usuarioLogado]="usuarioLogado"

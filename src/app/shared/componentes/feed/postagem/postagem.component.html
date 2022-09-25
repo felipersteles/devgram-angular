@@ -12,7 +12,10 @@
     
     <div class="rodapePostagem">
         <div class="acoesPostagem">
-            <img [src]="obterImagemCurtida()" alt="Icone curtir">
+            <img 
+                [src]="obterImagemCurtida()" 
+                alt="Icone curtir"
+                (click)="manipularCurtidas()">
             <img 
                 class="iconeComentario" 
                 [src]="obterImagemComentario()" 

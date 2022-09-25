@@ -1,5 +1,6 @@
+
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ItemMenu } from 'src/app/shared/tipos/item-menu.type';
 
 @Component({
@@ -9,6 +10,7 @@ import { ItemMenu } from 'src/app/shared/tipos/item-menu.type';
 })
 export class NavegacaoComponent implements OnInit {
 
+  private rotaAtiva: string = 'home'; //propriedade para saber a rota
   private mapaDeRotas: ItemMenu = {
     home: {
       img: 'home',
@@ -20,19 +22,35 @@ export class NavegacaoComponent implements OnInit {
     },
     perfil: {
       img: 'usuario',
-      rotas: ['/perfil/pessoal']
+      rotas: ['/perfil/pessoal', '/perfil/pessoal/editar']
     }
   }
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private rotaAtivada: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    this.rotaAtivada.url.subscribe(() => {
+      this.definirRotaAtiva();
+    });
+  }
+
+  public definirRotaAtiva() {
+    for (const menu in this.mapaDeRotas) {
+      const rotaMenu = this.mapaDeRotas[menu];
+      if (rotaMenu.rotas.includes(this.router.url)) {
+        this.rotaAtiva = menu;
+        break;
+      }
+    }
   }
 
   public obterImagem(menu: string): string {
     const rotaMenu = this.mapaDeRotas[menu];
-    const icone = rotaMenu.rotas.includes(this.router.url)
-      ? `${rotaMenu.img}_active`
-      : rotaMenu.img;
+
+    let icone = rotaMenu.img;
+    if (this.rotaAtiva === menu) icone = `${rotaMenu.img}_active`;
     
     return `assets/img/icones/${icone}.svg`;
   }

@@ -7,10 +7,13 @@ import { AppComponent } from './app.component';
 import { CadastroModule } from './cadastro/cadastro.module';
 import { LoginModule } from './login/login.module';
 import { SharedModule } from './shared/shared.module';
+import { PerfilModule } from './perfil/perfil.module';
+import { PublicacaoComponent } from './publicacao/publicacao.component';
+import { PublicacaoModule } from './publicacao/publicacao.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -20,6 +23,8 @@ import { SharedModule } from './shared/shared.module';
     FormsModule,
     LoginModule,
     CadastroModule,
+    PerfilModule,
+    PublicacaoModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,7 @@
 
+@import '../../../../assets/estilo/variaveis.scss';
+
+
 .containerUploadImagem{
     &.paginaCadastroUpload{
         text-align: center;
@@ -22,6 +25,47 @@
             margin: auto;
             position: absolute;
             bottom: 5px;
+        }
+    }
+
+    &.uploadImagemEdicaoPerfil {
+        .containerPrevisualizacao {
+            text-align: center;
+            padding: 14px 14px 8px;
+
+            .avatarEdicaoPerfil {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+        }
+
+        @media screen and (min-width: $breakpointDesktop) {
+            .containerPrevisualizacao {
+                .avatarEdicaoPerfil {
+                    width: 120px;
+                    height: 120px;
+                }
+            }
+        }
+    }
+
+    &.paginaPublicacao {
+        .imagemPrevisualizacaoPublicacao,
+        .imagemPrevisualizacaoPublicacao2Etapa {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            
+            &.imagemPrevisualizacaoPublicacao {
+                margin-bottom: 20px;
+            }
+
+            @media screen and (min-width: $breakpointDesktop) {
+                width: 200px;
+                height: 200px;
+            }
         }
     }
 }

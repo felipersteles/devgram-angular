@@ -1,4 +1,6 @@
 
+@import '../../../../assets/estilo/variaveis.scss';
+
 @mixin botaoPrimario {
     color: var(--branco);
     background-color: var(--corPrimaria);
@@ -41,6 +43,35 @@
         margin-top: 40px;
         padding: 12px;
         font-size: 16px;
+    }
+
+    &.btnCabecalhoPerfil {
+        font-size: 12px;
+        padding: 8px;
+        border-radius: 4px;
+    }
+
+    &.botaoPublicacao {
+        background-color: var(--corPrimaria2);
+        font-size: 12px;
+        padding: 10px 60px;
+
+        &:hover {
+            border: 1px solid var(--corPrimaria2);
+            color: var(--corPrimaria2);
+        }
+    }
+
+    @media screen and (min-width: $breakpointDesktop) {
+        &.btnCabecalhoPerfil {
+            font-size: 16px;
+            padding: 12px;
+        }
+
+        &.botaoPublicacao {
+            font-size: 14px;
+            padding: 12px 70px;
+        }
     }
 }
 

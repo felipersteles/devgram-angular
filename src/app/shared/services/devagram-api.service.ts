@@ -24,6 +24,18 @@ export class DevagramApiService {
     });
   }
 
+  public put(url: string, body: any): Promise<any>{
+    return new Promise((resolve, reject) => {
+      this.http.put(
+        this.obterUrl(url),
+        body
+      ).subscribe({
+        next: v => resolve(v), //caso de sucesso
+        error: e => reject(e) //caso de erro
+      })
+    });
+  }
+
   //classe generica
   public get(url: string): Promise<any>{
     return new Promise((resolve, reject) => {

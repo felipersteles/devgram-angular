@@ -4,7 +4,8 @@
 
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { delay, finalize, Observable } from "rxjs";
+import { LoadingService } from "../componentes/loading/loading.service";
 
 @Injectable({
     providedIn: 'root'
@@ -12,7 +13,17 @@ import { Observable } from "rxjs";
 
 //Implementacao de interface utilizando implements
 export class DevagramApiInterceptador implements HttpInterceptor{
+    private requisicoesEmAndamento: number = 0;
+
+    constructor(
+        private loadingService: LoadingService
+    ){}
+
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        this.requisicoesEmAndamento++;
+        if (this.requisicoesEmAndamento === 1) this.loadingService.exibir()
+            
+
         const token = localStorage.getItem('token');
         let novaReq = req;
         if (token) {
@@ -21,9 +32,16 @@ export class DevagramApiInterceptador implements HttpInterceptor{
             })
         }
 
-        return next.handle(novaReq);
+        //pipe espera uma sequencia de passos que serão
+        //executados dps da requisição
+        return next.handle(novaReq).pipe(
+            delay(2000), // mil milisegundos
+            finalize(() => { //finaliza pipe
+                this.requisicoesEmAndamento--;
+                if(this.requisicoesEmAndamento === 0) this.loadingService.ocultar()
+            })
+        );
     }
 }
 
 //Após implementação é necessario ir ao modulo e disponibilza-la no array de proviiiders
-

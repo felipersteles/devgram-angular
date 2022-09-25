@@ -31,10 +31,12 @@ export class CabecalhoComponent implements OnInit {
 
   //assincrono pq ele pesquisa no backend
   public async pesquisarUsuarios(): Promise<any>{
-    //console.log(this.termoPesquisado)
+    console.log(this.termoPesquisado)
 
-    if (this.termoPesquisado.length < 3)
+    if (this.termoPesquisado.length < 3) {
+      this.resultadoDaPesquisa = [];
       return;
+    }
     
     try {
       const usuariosRetornados = await this.apiUsuarioDevagram.pesquisarUsuarios(
@@ -52,6 +54,7 @@ export class CabecalhoComponent implements OnInit {
   }
 
   public irParaPerfil(idUsuario: string): void {
-    console.log(idUsuario)
+    //console.log(idUsuario)
+    this.router.navigate(['perfil', idUsuario]);
   }
 }
