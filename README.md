@@ -9,9 +9,9 @@ Para visualizar o programa basta acessar o link: https://devagram-felipeteles.he
 
 ## 🛠️ Construído com
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - O framework web usado
-* [Maven](https://maven.apache.org/) - Gerente de Dependência
-* [ROME](https://rometools.github.io/rome/) - Usada para gerar RSS
+* [Angular]([http://www.dropwizard.io/1.0.2/docs/](https://angular.io/)) - O framework utilizado
+* [Typescript](https://www.typescriptlang.org/) - Linguagem de programação do código
+* [NODE](https://nodejs.org/en/) - Runtime utilizada
 
 ## ✒️ Autores
 
