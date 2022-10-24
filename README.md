@@ -1,7 +1,18 @@
-# devgram-angular
+# Instagram em angular
 
-Uma réplica do instagram em angular deseenvolvido baseado em uma aula do grupo Devaria.
+Um instagram fake desenvolvido utilizando a framework Angular na linguagem Typescript.
 
-Pode ser acessado e testado pelo link: https://devagram-felipeteles.herokuapp.com/
-## 
-API utilizada implementada em Typescript utilizando Cosmicjs e JWT: https://github.com/felipersteles/devgram-api
+## 🚀 Começando
+
+Para rodar o projeto basta fazer um git clone no repositório e utilizar o comando ng serve.
+Para visualizar o programa basta acessar o link: https://devagram-felipeteles.herokuapp.com/
+
+## 🛠️ Construído com
+
+* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - O framework web usado
+* [Maven](https://maven.apache.org/) - Gerente de Dependência
+* [ROME](https://rometools.github.io/rome/) - Usada para gerar RSS
+
+## ✒️ Autores
+
+* **Felipe Teles** - [Felipe Teles](https://github.com/felipersteles)
