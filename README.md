@@ -4,8 +4,22 @@ Um instagram fake desenvolvido utilizando a framework Angular na linguagem Types
 
 ## 🚀 Começando
 
-Para rodar o projeto basta fazer um git clone no repositório e utilizar o comando ng serve.
+### Rodando o projeto
 
+Para rodar o projeto basta fazer um git clone no repositório e utilizar o comando ng serve. exemplo:
+```bash
+# Caso seja primeira vez
+# É necessario baixar as dependencias
+$ npm i
+
+# Com as dependencias ja baixadas
+# Basta rodar o projeto
+$ npm start
+
+
+```
+
+*Infelizmente nao esta atualizada*
 Para visualizar o programa basta acessar o link: https://devagram-felipeteles.herokuapp.com/
 
 ## 🛠️ Construído com

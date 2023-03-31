@@ -80,6 +80,7 @@ export class PublicacaoComponent implements OnInit {
 
     //fazer o controle do cadastro
     if (this.form.invalid) return;
+    if(this.estaFazendoRequisicaoParaBackend) return;
 
     this.estaFazendoRequisicaoParaBackend = true;
 
@@ -98,7 +99,7 @@ export class PublicacaoComponent implements OnInit {
       alert(e.error?.erro || 'Erro ao cadastrar a publicação!');
     }
   }
-  
+
   public verificarHabilitacaoAcaoDireita(): boolean {
     return (this.estaNaSegundaEtapa() && this.form.invalid && !this.estaFazendoRequisicaoParaBackend);
   }
